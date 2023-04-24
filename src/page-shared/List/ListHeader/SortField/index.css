@@ -1,0 +1,17 @@
+.sort-field {
+    display:flex;
+    align-items: baseline;
+    cursor: pointer;
+    width: 150px;
+}
+.sort-field > .arrow {
+    display: none;
+    transition: 5s
+}
+.sort-field:hover > .arrow {
+    display: inline-block
+}
+.sort-field:hover > .active {
+    display: none;
+    transition: 5s
+}

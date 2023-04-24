@@ -1,5 +1,7 @@
-import Input from "./Input";
-import Button from "./Button";
-import Image from "./Image";
+import Button from "./Button/Button";
+import Input, { MemorizedInput } from "./Input/Input";
+import Star from "./Star/Star";
+import Trash from "./Trash/Trash";
+import Spiner from "./Spiner/Spiner"
 
-export { Image, Button, Input }
+export { Button, Input, Star, Trash, Spiner, MemorizedInput }
