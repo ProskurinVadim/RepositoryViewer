@@ -1,23 +1,17 @@
-import { FC, memo } from "react";
-import Form from 'react-bootstrap/Form';
+import { FC } from "react";
 
 interface IInput {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    value: string
+    value: string,
     placeholder?: string,
     className?: string,
+    disable?: boolean,
 }
 
-const Input: FC<IInput> = ({ className, placeholder = "Enter value", onChange, value }) => {
+const Input: FC<IInput> = ({ placeholder = "Enter Value", onChange, className = "", value, disable  }) => {
     return (
-        <Form.Group className={`${className}`}>
-            <Form.Control role="input" placeholder={placeholder} onChange={onChange} value={value} />
-        </Form.Group>
+        <input className={"input " + className} onChange={onChange} value={value} placeholder={placeholder} disabled={disable} />
     )
 }
 
 export default Input
-
-export const MemorizedInput = memo(Input, (prev: IInput, next: IInput) => {
-    return prev.value === next.value
-});

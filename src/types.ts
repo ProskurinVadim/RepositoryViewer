@@ -1,20 +1,19 @@
+interface IListItem {
+    name: string,
+    author: string,
+    description: string,
+    language: string,
+    stars: number,
+    watch: number,
+}
+
 interface ICondition {
     condition?: boolean,
     children: React.ReactNode | string | null,
 }
 
-interface ISort {
-    direction: "asc" | "desc",
-    key: string,
-    type: "" | "bucket"
+interface IIcon {
+    className?: string
 }
 
-interface IListItem {
-    name: string,
-    favorites: boolean,
-    amount: number
-    description?: string,
-    image?: string
-}
-
-export type { IListItem, ICondition, ISort }
+export type { IListItem, ICondition, IIcon }

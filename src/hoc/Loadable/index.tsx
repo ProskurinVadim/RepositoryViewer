@@ -2,7 +2,6 @@ import { FC } from "react";
 import Condition from "../Conditional/Condition";
 import If from "../Conditional/If";
 import Else from "../Conditional/Else";
-import { Spiner } from "../../components/common"
 
 interface ILoadable {
     loading: boolean,
@@ -12,7 +11,12 @@ interface ILoadable {
 const Loadable: FC<ILoadable> = ({ loading, children }) => (
     <Condition condition={loading}>
         <If>
-            <div className="text-center mt-5"><Spiner /></div>
+            <div className="spinner">
+                <div className="spinner-item" />
+                <div className="spinner-item" />
+                <div className="spinner-item" />
+                <div className="spinner-item" />
+            </div>
         </If>
         <Else>
             {children || null}
