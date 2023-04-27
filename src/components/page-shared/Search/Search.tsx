@@ -15,7 +15,7 @@ const Search: FC<ISearch> = ({ setSearch }) => {
         }, 500)
 
         return () => clearTimeout(debounce)
-    }, [value])
+    }, [value, setSearch])
 
     const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value),[]);
 

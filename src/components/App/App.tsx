@@ -16,11 +16,14 @@ const App: FC = () => {
     const pageLimit = Math.ceil(totalCount / 20);
     const dispatch: AppDispatch = useDispatch();
 
-    const handelSetValue = useCallback((value: string) => setValue((prev) => value),[]);
-
+    const handelSetPage = useCallback((page: number) => setPage((prev: number) => page), []);
+    const handelSetValue = useCallback((value: string) => {
+        handelSetPage(1);   
+        setValue((prev: string) => value)
+    }, [handelSetPage]);
     useEffect(() => {
         dispatch(search(page, value));
-    },[page,value])
+    }, [page, value, dispatch])
 
     return (
         <div className="page">
@@ -36,7 +39,7 @@ const App: FC = () => {
                         </Else>
                     </Condition>
                 </Loadoble>
-                <Pagination pageLimit={pageLimit} page={page} setPage={setPage} />
+                <Pagination pageLimit={pageLimit} page={page} setPage={handelSetPage} />
             </div>
         </div>
   );

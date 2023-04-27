@@ -22,9 +22,9 @@ const Pagination: FC<IPagination> = ({ pageLimit, page, setPage, }) => {
 
     return (
         <ul className="pagination">
-            <PaginationItem text="Previous" setPage={() => handelSetPreviousPage()} />
             <Condition condition={pageScale !== 1}>
                 <If>
+                    <PaginationItem text="Previous" setPage={() => handelSetPreviousPage()} />
                     <PaginationItem text="1" setPage={() => handelSetPage(1)} />
                     <PaginationItem text={String(pageScale -1)} setPage={() => handelSetPage(pageScale -1)} active={pageScale -1 === page} />
                 </If>
@@ -40,10 +40,10 @@ const Pagination: FC<IPagination> = ({ pageLimit, page, setPage, }) => {
             }
             <Condition condition={pageScale < maxScale}>
                 <If>
+                    <PaginationItem text="Next" setPage={() => handelSetNextPage()} />
                     <PaginationItem text={String(pageLimit)} setPage={() => handelSetPage(pageLimit)} />
                 </If>
             </Condition>
-            <PaginationItem text="Next" setPage={() => handelSetNextPage()} />
         </ul>
     )
 }

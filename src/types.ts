@@ -1,5 +1,6 @@
 interface IListItem {
     name: string,
+    image: string
     author: string,
     description: string,
     language: string,

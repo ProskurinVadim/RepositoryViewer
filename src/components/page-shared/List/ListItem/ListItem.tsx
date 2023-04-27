@@ -4,11 +4,11 @@ import { Image } from "../../../common/";
 import { IListItem } from "../../../../types";
 
 
-const ListItem: FC<IListItem> = ({ name, author, description, language, stars, watch }) => {
+const ListItem: FC<IListItem> = ({ name, author, description, language, stars, watch, image }) => {
     return (
         <li className="space-between list-item">
             <div className="space-between">
-                <Image className="list-item-image shrink-0" />
+                <Image className="list-item-image shrink-0" src={image} />
                 <div className="list-item-content">
                     <h2 className="list-item-header">{name}</h2>
                     <p className="list-item-text">{author}</p>

@@ -6,7 +6,7 @@ interface IItem {
     active?: boolean,
 }
 
-const PaginationItem: FC<IItem> = ({ text, setPage, active }) => {
+const PaginationItem: FC<IItem> = ({ text, setPage, active, }) => {
     return (
         <li
             className={`pagination-item text__bold ${active ? "active" : ""}`}

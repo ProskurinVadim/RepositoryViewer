@@ -17,6 +17,8 @@ const Condition: FC<ICondition> = ({ children, condition }) => {
             .find((child: React.ReactNode) => {
                 if (React.isValidElement(child)) {
                     return child.type === MatchComponent && (MatchComponent !== ElseIf || child.props.condition)
+                } else {
+                    return <></>
                 }
             })
     ), [children]);

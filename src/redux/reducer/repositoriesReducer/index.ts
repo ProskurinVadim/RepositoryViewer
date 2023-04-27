@@ -1,7 +1,7 @@
-import { createReducer } from '@reduxjs/toolkit';
-import type { PayloadAction , Dispatch } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { setErrorActions, setItemsAction, loadItemsAction } from "../../actions/repositoriesActions";
+import { getItems } from "../../actions/repositoriesActions";
 import { IListItem } from "../../../types";
 
 const initialState = {
@@ -18,25 +18,28 @@ export interface IRepState {
     totalCount: number
 }
 
-interface ISetActions {
-    items: IListItem[] | [],
-    totalCount: number
-}
-
-const repositoryReducer = createReducer(initialState, (builder) => {
-    builder
-        .addCase(setErrorActions, (state: IRepState, action: PayloadAction<string> ) => {
-            state.error = action.payload;
-            state.loading = false;
-        })
-        .addCase(loadItemsAction, (state: IRepState, action: PayloadAction<boolean>) => {
-            state.loading = action.payload;
-        })
-        .addCase(setItemsAction, (state: IRepState, action: PayloadAction<ISetActions>) => {
-            state.error = "";
-            state.loading = false;
-            state.items = action.payload.items;
-            state.totalCount = action.payload.totalCount;
-        })
+export const repositorySlice = createSlice({
+    name: 'repositories',
+    initialState,
+    reducers: {},
+    extraReducers(builder) {
+        builder
+            .addCase(getItems.pending, (state: IRepState, action) => {
+                state.loading = true;
+            })
+            .addCase(getItems.fulfilled, (state: IRepState, action: any) => {
+                if (!action.meta.arg.$config.cancelToken.reason) {
+                    state.error = "";
+                    state.loading = false;
+                    state.items = action.payload.items;
+                    state.totalCount = action.payload.totalCount;
+                }
+            })
+            .addCase(getItems.rejected, (state: IRepState, action: PayloadAction<any>) => {
+                state.error = action.payload;
+                state.loading = false;
+            })
+             
+    }
 })
-export default repositoryReducer
+export default repositorySlice.reducer

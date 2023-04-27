@@ -48,12 +48,19 @@
 
         &-image {
             margin-right: 32px;
+
+            img {
+                width: 128px;
+                height: 144px;
+                border-radius: 4px;
+            }
         }
 
         &-icon {
             font-weight: 600;
             font-size: 16px;
             margin-right: 13px;
+
             &__colored {
                 color: #FFC22B
             }
