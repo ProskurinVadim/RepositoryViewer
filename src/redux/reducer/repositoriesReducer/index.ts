@@ -35,10 +35,11 @@ export const repositorySlice = createSlice({
                     state.totalCount = action.payload.totalCount;
                 }
             })
-            .addCase(getItems.rejected, (state: IRepState, action: PayloadAction<any>) => {
-                console.log("sda")
-                state.error = action.payload;
-                state.loading = false;
+            .addCase(getItems.rejected, (state: IRepState, action: any) => {
+                if (!action.meta.arg.$config.cancelToken.reason) {
+                    state.error = action.payload;
+                    state.loading = false;
+                }
             })
              
     }
