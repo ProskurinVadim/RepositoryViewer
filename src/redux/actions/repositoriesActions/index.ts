@@ -19,7 +19,7 @@ export const getItems = createAsyncThunk(
             const totalCount = response.data.total_count > 1000 ? 1000 : response.data.total_count;
             return { items, totalCount}
         } catch (error: any) {
-            thunkAPI.rejectWithValue(error.message)
+            return thunkAPI.rejectWithValue(error.message)
         }
         
     }

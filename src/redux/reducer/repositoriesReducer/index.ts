@@ -36,6 +36,7 @@ export const repositorySlice = createSlice({
                 }
             })
             .addCase(getItems.rejected, (state: IRepState, action: PayloadAction<any>) => {
+                console.log("sda")
                 state.error = action.payload;
                 state.loading = false;
             })
